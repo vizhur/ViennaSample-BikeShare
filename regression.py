@@ -17,6 +17,7 @@ from sklearn.preprocessing import Imputer
 from sklearn.model_selection import cross_val_score
 from sklearn.externals import joblib
 import csv
+import os
 import os.path
 import pickle
 print(__doc__)
@@ -118,6 +119,9 @@ if __name__ == '__main__':
     trainfilename = 'TrainDataV6.csv'
     testfilename = 'TestDataV6.csv'
     
+    # create the outputs folder
+    os.makedirs('./outputs', exist_ok=True)
+
     labelcolumn = 3
     excludedcatcolumns = [labelcolumn] 
     excludednumcolumns = [] 
