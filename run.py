@@ -4,4 +4,4 @@
 import os
 
 for numtrees in range(5, 25, 5):
-    os.system('az ml execute start -t local ./regression.py {}'.format(numtrees))
+    os.system('az ml execute start -c local ./regression.py {}'.format(numtrees))
