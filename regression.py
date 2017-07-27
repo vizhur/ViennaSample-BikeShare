@@ -160,7 +160,7 @@ if __name__ == '__main__':
     score4 = cross_val_score(r4, processedtraindata_imp, processedlabels).mean()
     print("rf R-Sq on xval TRAIN = %.2f" % score4)
 
-    from azureml_sdk import data_collector
+    from azureml.sdk import data_collector
     run_logger = data_collector.current_run() 
 
     # log the number of trees
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     # it shows up under details for the particular run    
     #############################################
     import pandas
-    from azureml_sdk import data_collector
+    from azureml.sdk import data_collector
     run_logger = data_collector.current_run() 
     metrics = []        
     for i in range(len(testlabel)):
