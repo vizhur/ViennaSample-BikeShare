@@ -129,22 +129,23 @@ def run(inputString):
 # This is the main execution, it simulates the
 # web service by calling init, and run
 #############################################
+if __name__ == '__main__': 
+    import json
+    #perform initialization
+    init()
 
-import json
-#perform initialization
-init()
+    #read in the test data file
+    filepath = '.'
+    testfilename = 'TestDataV6.csv'
+    labelcolumn = 3
+    excludedcatcolumns = [labelcolumn] 
+    excludednumcolumns = []
 
-#read in the test data file
-filepath = '.'
-testfilename = 'TestDataV6.csv'
-labelcolumn = 3
-excludedcatcolumns = [labelcolumn] 
-excludednumcolumns = []
+    fileread = readdata(filepath,testfilename, labelcolumn,excludedcatcolumns, excludednumcolumns)
+    testdata = fileread['data']
 
-fileread = readdata(filepath,testfilename, labelcolumn,excludedcatcolumns, excludednumcolumns)
-testdata = fileread['data']
+    numfeatures = len(testdata[0])
 
-numfeatures = len(testdata[0])
+    #call run to do prediction, passing in last row from test data read above
+    print(run(json.dumps(testdata[-1:])))
 
-#call run to do prediction, passing in last row from test data read above
-print(run(json.dumps(testdata[-1:])))
